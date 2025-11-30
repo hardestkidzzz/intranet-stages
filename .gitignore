@@ -1,0 +1,36 @@
+# ========================
+# Fichiers à ignorer pour Git
+# ========================
+
+# Fichiers uploadés par les utilisateurs
+uploads/*
+!uploads/.gitkeep
+
+# Fichiers de configuration locale (contient le mot de passe BDD)
+# db.php  # Décommente si tu veux exclure db.php
+
+# Fichiers temporaires PHP
+*.log
+*.cache
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.cursor/
+
+# Fichiers de test/debug
+test_*.php
+create_admin.php
+update_users.php
+
+# Dépendances (si tu utilises Composer plus tard)
+/vendor/
+composer.lock
+
