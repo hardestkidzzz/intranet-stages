@@ -80,7 +80,9 @@ require_once __DIR__ . '/../includes/header.php';
 <div class="card shadow-sm mb-3">
   <div class="card-body">
     <h3 class="h6">Activité — 30 derniers jours</h3>
-    <canvas id="chart30" height="80"></canvas>
+    <div style="height: 300px; position: relative;">
+      <canvas id="chart30"></canvas>
+    </div>
   </div>
 </div>
 
@@ -89,7 +91,9 @@ require_once __DIR__ . '/../includes/header.php';
     <div class="card shadow-sm">
       <div class="card-body">
         <h3 class="h6">Offres par statut</h3>
-        <canvas id="pieOffres" height="200"></canvas>
+        <div style="height: 250px; position: relative;">
+          <canvas id="pieOffres"></canvas>
+        </div>
       </div>
     </div>
   </div>
@@ -97,7 +101,9 @@ require_once __DIR__ . '/../includes/header.php';
     <div class="card shadow-sm">
       <div class="card-body">
         <h3 class="h6">Candidatures par statut</h3>
-        <canvas id="pieCands" height="200"></canvas>
+        <div style="height: 250px; position: relative;">
+          <canvas id="pieCands"></canvas>
+        </div>
       </div>
     </div>
   </div>
@@ -105,7 +111,9 @@ require_once __DIR__ . '/../includes/header.php';
     <div class="card shadow-sm">
       <div class="card-body">
         <h3 class="h6">Stages par statut</h3>
-        <canvas id="pieStages" height="200"></canvas>
+        <div style="height: 250px; position: relative;">
+          <canvas id="pieStages"></canvas>
+        </div>
       </div>
     </div>
   </div>
@@ -113,35 +121,68 @@ require_once __DIR__ . '/../includes/header.php';
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <script>
-const labels = <?= json_encode(array_keys($offresSerie)) ?>;
-const dataOffres = <?= json_encode(array_values($offresSerie)) ?>;
-const dataCands  = <?= json_encode(array_values($candsSerie)) ?>;
-const dataStages = <?= json_encode(array_values($stagesSerie)) ?>;
+document.addEventListener('DOMContentLoaded', function() {
+  const labels = <?= json_encode(array_keys($offresSerie)) ?>;
+  const dataOffres = <?= json_encode(array_values($offresSerie)) ?>;
+  const dataCands  = <?= json_encode(array_values($candsSerie)) ?>;
+  const dataStages = <?= json_encode(array_values($stagesSerie)) ?>;
 
-new Chart(document.getElementById('chart30'), {
-  type: 'line',
-  data: {
-    labels,
-    datasets: [
-      { label:'Offres', data: dataOffres, tension:.25 },
-      { label:'Candidatures', data: dataCands, tension:.25 },
-      { label:'Stages', data: dataStages, tension:.25 }
-    ]
-  },
-  options: { responsive:true, maintainAspectRatio:false }
-});
-
-function pie(el, map){
-  const labels = Object.keys(map), values = Object.values(map);
-  return new Chart(document.getElementById(el), {
-    type:'doughnut',
-    data:{ labels, datasets:[{ data: values }]},
-    options:{ plugins:{ legend:{ position:'bottom' } } }
+  // Graphique ligne - Activité 30 jours
+  new Chart(document.getElementById('chart30'), {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        { label:'Offres', data: dataOffres, tension: 0.25, borderColor: '#198754', backgroundColor: 'rgba(25, 135, 84, 0.1)' },
+        { label:'Candidatures', data: dataCands, tension: 0.25, borderColor: '#0d6efd', backgroundColor: 'rgba(13, 110, 253, 0.1)' },
+        { label:'Stages', data: dataStages, tension: 0.25, borderColor: '#fd7e14', backgroundColor: 'rgba(253, 126, 20, 0.1)' }
+      ]
+    },
+    options: { 
+      responsive: true, 
+      maintainAspectRatio: false,
+      animation: { duration: 500 },
+      scales: {
+        y: { beginAtZero: true }
+      }
+    }
   });
-}
-pie('pieOffres', <?= json_encode($pie_offres) ?>);
-pie('pieCands',  <?= json_encode($pie_cands) ?>);
-pie('pieStages', <?= json_encode($pie_stage) ?>);
+
+  // Fonction pour créer les graphiques camembert
+  function pie(el, map) {
+    const labels = Object.keys(map);
+    const values = Object.values(map).map(v => parseInt(v) || 0);
+    
+    // Ne pas créer si pas de données
+    if (values.length === 0 || values.every(v => v === 0)) {
+      document.getElementById(el).parentElement.innerHTML = '<p class="text-muted text-center py-4">Aucune donnée</p>';
+      return;
+    }
+    
+    return new Chart(document.getElementById(el), {
+      type: 'doughnut',
+      data: { 
+        labels, 
+        datasets: [{ 
+          data: values,
+          backgroundColor: ['#198754', '#0d6efd', '#ffc107', '#dc3545', '#6c757d', '#0dcaf0']
+        }]
+      },
+      options: { 
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: { duration: 500 },
+        plugins: { 
+          legend: { position: 'bottom' } 
+        } 
+      }
+    });
+  }
+
+  pie('pieOffres', <?= json_encode($pie_offres) ?>);
+  pie('pieCands',  <?= json_encode($pie_cands) ?>);
+  pie('pieStages', <?= json_encode($pie_stage) ?>);
+});
 </script>
 
 <?php require_once __DIR__ . '/../includes/footer.php'; ?>
