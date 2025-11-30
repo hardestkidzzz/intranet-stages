@@ -45,7 +45,7 @@ Cette application permet de gérer l'ensemble du processus de stage dans un éta
 
 ### 🔐 Authentification
 - Connexion sécurisée avec gestion des sessions
-- Hachage des mots de passe (bcrypt)
+- Hachage des mots de passe
 - Contrôle d'accès par rôle
 
 ### 📊 Tableau de bord
