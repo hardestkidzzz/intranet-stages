@@ -81,7 +81,7 @@ Cette application permet de gérer l'ensemble du processus de stage dans un éta
 ### 📥 Export CSV
 - Export des stages pour Excel
 - Filtres conservés à l'export
-- Encodage UTF-8 compatible Excel
+- Compatible Excel
 
 ---
 
@@ -126,7 +126,7 @@ L'application utilise le pattern DAO pour séparer la logique métier de l'accè
 
 - **XAMPP** ou **WAMP** (Apache + MySQL + PHP 8.0+)
 - **phpMyAdmin** pour la gestion de la base de données
-- Navigateur web moderne
+- Navigateur web assez moderne
 
 ### Étapes d'installation
 
@@ -143,10 +143,10 @@ L'application utilise le pattern DAO pour séparer la logique métier de l'accè
 3. **Configurer la connexion** dans `db.php` :
    ```php
    $host = '127.0.0.1';
-   $port = '3306';  // ou 3310 selon votre config
+   $port = '3306';  // ou autre selon votre config pour ma part c'était 3310
    $dbname = 'intranet_stages';
    $username = 'root';
-   $password = '';
+   $password = ''; // pas de mdp 
    ```
 
 4. **Démarrer XAMPP** (Apache + MySQL)
