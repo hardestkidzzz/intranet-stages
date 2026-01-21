@@ -8,7 +8,7 @@
 
 ---
 
-## 📋 Table des matières
+## Table des matières
 
 - [Présentation](#-présentation)
 - [Fonctionnalités](#-fonctionnalités)
@@ -21,7 +21,7 @@
 
 ---
 
-## 🎯 Présentation
+## Présentation
 
 Cette application permet de gérer l'ensemble du processus de stage dans un établissement d'enseignement :
 - Publication et gestion des offres de stage par les entreprises
@@ -41,51 +41,51 @@ Cette application permet de gérer l'ensemble du processus de stage dans un éta
 
 ---
 
-## ✨ Fonctionnalités
+## Fonctionnalités
 
-### 🔐 Authentification
+### Authentification
 - Connexion sécurisée avec gestion des sessions
 - Hachage des mots de passe
 - Contrôle d'accès par rôle
 
-### 📊 Tableau de bord
+### Tableau de bord
 - KPIs en temps réel (stages en cours, terminés, ruptures)
 - Filtres multi-critères (statut, entreprise, enseignant, dates)
 - Pagination des résultats
 
-### 🏢 Gestion des entreprises
+### Gestion des entreprises
 - CRUD complet des entreprises partenaires
 - Informations : SIRET, adresse, site web, secteur d'activité
 - Historique des stages par entreprise
 
-### 👨‍🎓 Gestion des étudiants
+### Gestion des étudiants
 - Profil étudiant avec formation
 - Historique des candidatures
 - Accès à son stage en cours
 
-### 📝 Offres de stage
+### Offres de stage
 - Publication par les entreprises
 - Recherche multi-critères (localisation, durée, compétences)
 - Système de candidature avec CV et lettre de motivation
 
-### 📈 Suivi des stages
+### Suivi des stages
 - Timeline des points de suivi
 - Upload de documents (rapports, conventions)
 - Évaluation finale (notes techniques, soft skills, dossier)
 
-### 📄 Convention de stage
+### Convention de stage
 - **Génération automatique en HTML**
 - Document officiel prêt à imprimer
 - Toutes les informations légales incluses
 
-### 📥 Export CSV
+### Export CSV
 - Export des stages pour Excel
 - Filtres conservés à l'export
 - Compatible Excel
 
 ---
 
-## 🏗 Architecture
+## Architecture
 
 ### Pattern utilisé : **DAO (Data Access Object)**
 
@@ -120,7 +120,7 @@ L'application utilise le pattern DAO pour séparer la logique métier de l'accè
 
 ---
 
-## 🚀 Installation
+## Installation
 
 ### Prérequis
 
@@ -167,7 +167,7 @@ L'application utilise le pattern DAO pour séparer la logique métier de l'accè
 
 ---
 
-## 📁 Structure du projet
+## Structure du projet
 
 ```
 intranet-stages/
@@ -226,16 +226,16 @@ intranet-stages/
 │
 ├── 📂 uploads/                  # Fichiers uploadés (CV, rapports)
 │
-├── convention.php               # 📄 Génération convention HTML
-├── db.php                       # 🔌 Connexion PDO
-├── export_csv.php               # 📥 Export CSV
-├── index.php                    # 🏠 Page d'accueil / Dashboard
-└── README.md                    # 📖 Documentation
+├── convention.php               # Génération convention HTML
+├── db.php                       # Connexion PDO
+├── export_csv.php               # Export CSV
+├── index.php                    # Page d'accueil / Dashboard
+└── README.md                    # Documentation
 ```
 
 ---
 
-## 📐 Conception (MCD/MPD)
+## Conception (MCD/MPD)
 
 ### Modèle Conceptuel de Données (MCD)
 
@@ -290,7 +290,7 @@ intranet-stages/
 
 ---
 
-## 🛠 Technologies
+## Technologies
 
 ### Backend
 - **PHP 8.0+** - Langage serveur
@@ -309,7 +309,7 @@ intranet-stages/
 
 ---
 
-## 📸 Captures d'écran
+## Captures d'écran
 
 ### Dashboard principal
 - Vue d'ensemble avec KPIs
@@ -325,7 +325,7 @@ intranet-stages/
 
 ---
 
-## 👨‍💻 Auteur
+## Auteur
 
 Projet réalisé dans le cadre du **BTS SIO** (Services Informatiques aux Organisations).
 
